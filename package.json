@@ -1,0 +1,7 @@
+{
+  "name": "hermes-context-persistence",
+  "version": "0.1.0",
+  "description": "Context persistence plugin for hermes-context-persistence",
+  "author": "Alfonso de la Guarda Reyes <alfonsodg@gmail.com>",
+  "license": "MIT"
+}
