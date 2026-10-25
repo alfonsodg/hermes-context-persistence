@@ -20,6 +20,10 @@ hermes plugins install alfonsodg/hermes-context-persistence
 hermes plugins enable hermes-context-persistence
 ```
 
+## Author
+
+Alfonso de la Guarda Reyes <alfonsodg@gmail.com>
+
 ## License
 
 MIT
