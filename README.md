@@ -1,12 +1,15 @@
 # hermes-context-persistence
 
-Hermes Agent plugin that re-injects context after compaction using the
-`post_compaction` hook.
+Hermes Agent plugin that re-injects AGENTS.md context before each LLM call
+using the `pre_llm_call` hook.
 
 ## Problem
 
-Long Hermes sessions compact older conversation into a summary. Project
-rules and memory can be dropped, causing the agent to forget mandates.
+Hermes already loads `AGENTS.md` as a context file into the system prompt,
+which compaction does not summarise away. However, in very long sessions the
+compacted context can still lose fidelity on project-specific mandates. This
+plugin ensures `AGENTS.md` is re-injected before each LLM call so the rules
+remain visible even after compaction.
 
 ## Solution
 

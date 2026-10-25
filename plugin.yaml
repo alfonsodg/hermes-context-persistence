@@ -3,6 +3,5 @@ version: 0.1.0
 description: Re-inject AGENTS.md context after compaction to prevent context loss.
 author: Alfonso de la Guarda Reyes
 license: MIT
-entrypoint: hermes_context_persistence
 hooks:
-  - post_compaction
+  - pre_llm_call
