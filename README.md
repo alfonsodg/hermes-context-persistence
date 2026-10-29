@@ -13,8 +13,10 @@ remain visible even after compaction.
 
 ## Solution
 
-This plugin uses the `post_compaction` hook to re-inject `AGENTS.md` and
-relevant memory after compaction.
+This plugin registers a `pre_llm_call` hook that reads `AGENTS.md` from the
+Hermes process's working directory and returns it as additional context before
+every model call. Note: in gateway/Desktop backend mode, the process working
+directory is the server's directory, not the session's project directory.
 
 ## Installation
 

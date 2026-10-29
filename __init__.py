@@ -1,4 +1,4 @@
-"""Hermes plugin: re-inject AGENTS.md context after compaction."""
+"""Hermes plugin: re-inject AGENTS.md context before each LLM call."""
 
 import os
 from pathlib import Path
@@ -13,7 +13,7 @@ def _read_agents(workspace: str) -> str:
 
 
 def pre_llm_call(**kwargs) -> str:
-    """Re-inject AGENTS.md context before each LLM call (survives compaction)."""
+    """Re-inject AGENTS.md context before each LLM call."""
     workspace = kwargs.get("workspace", os.getcwd())
     excerpt = _read_agents(workspace)
     if excerpt:
@@ -24,6 +24,3 @@ def pre_llm_call(**kwargs) -> str:
 def register(ctx):
     """Register the pre_llm_call hook with Hermes."""
     ctx.register_hook("pre_llm_call", pre_llm_call)
-    # Also try system prompt section injection if available
-    if hasattr(ctx, "register_system_prompt_section"):
-        ctx.register_system_prompt_section("agents-md", _read_agents(ctx.get("workspace", os.getcwd())))

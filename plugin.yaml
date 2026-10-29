@@ -1,7 +1,7 @@
 name: hermes-context-persistence
 version: 0.1.0
-description: Re-inject AGENTS.md context after compaction to prevent context loss.
+description: Re-inject AGENTS.md context before each LLM call.
 author: Alfonso de la Guarda Reyes
 license: MIT
-hooks:
+provides_hooks:
   - pre_llm_call
